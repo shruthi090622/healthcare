@@ -1,0 +1,22 @@
+declare
+v_sum number;
+cursor c is select sum(sal) tot_sum from emp
+group by deptno;
+begin
+for i in c loop
+dbms_output.put_line(i.tot_sum);
+end loop;
+end;
+
+
+declare
+v_str varchar2(20):=',abc,xyz,pqr,lmn,';
+v_str1 varchar2(100);
+v_no number(4);
+begin
+v_no:=length(v_str)-length(replace(v_str,',',''));
+for i in 1..v_no loop
+v_str1:=substr(v_str,instr(v_str,',',1,i)+1,(instr(v_str,',',1,i+1)-1-instr(v_str,',',1,i)));
+dbms_output.put_line(v_str1);
+end loop;
+end;
